@@ -1,9 +1,16 @@
 import axios from "axios";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: `${BACKEND_URL}/api`,
   headers: { "Content-Type": "application/json" },
 });
+
+// ─── Health Check ─────────────────────────────────────────────────────────────
+
+export const checkHealth = () =>
+  API.get("/health").then((r) => r.data);
 
 // ─── Students API ─────────────────────────────────────────────────────────────
 
@@ -26,3 +33,5 @@ export const deleteStudent = (id) =>
   API.delete(`/students/${id}`).then((r) => r.data);
 
 export default API;
+
+export { BACKEND_URL };

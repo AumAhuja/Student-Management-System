@@ -39,9 +39,14 @@ export function useStats() {
   const fetchStats = useCallback(async () => {
     try {
       const res = await getStats();
-      setStats(res.data);
-    } catch {
-      // silently fail for stats
+      // Ensure byDept is always an array
+      if (res?.data && !Array.isArray(res.data.byDept)) {
+        res.data.byDept = [];
+      }
+      setStats(res?.data || null);
+    } catch (err) {
+      console.warn("Stats loading failed:", err.message);
+      setStats({ byDept: [], total: 0, active: 0, inactive: 0, avgGpa: "0.00" });
     } finally {
       setLoading(false);
     }

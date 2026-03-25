@@ -194,7 +194,7 @@ export default function App() {
   const handleDelete = async () => { const ok=await remove(deleteTarget._id); if(ok) setDeleteTarget(null); };
 
   const topStudents = [...students].sort((a,b)=>+b.gpa-+a.gpa).slice(0,5);
-  const deptData = stats?.byDept||[];
+  const deptData = Array.isArray(stats?.byDept) ? stats.byDept : [];
 
   const SortIcon = ({k}) => <span style={{marginLeft:4,fontSize:9,opacity:sortKey===k?1:0.15,color:"#818cf8"}}>{sortKey===k?(sortDir==="asc"?"▲":"▼"):"▲"}</span>;
 

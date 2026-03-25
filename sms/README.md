@@ -6,6 +6,19 @@ A full-stack web application built with **React**, **Node.js + Express**, and **
 
 ## 📁 Project Structure
 
+//As runs on MongoDB Compass
+1. Install MongoDB
+2. Start MongoDB service
+3. Go to backend folder → run: npm install
+4. Run: npm start
+
+5. Go to frontend folder → run: npm install
+6. Run: npm start
+
+Note: Project uses local MongoDB (mongodb://localhost:27017)
+
+“I used MongoDB locally with Compass. It can be easily switched to Atlas for deployment.”
+
 ```
 sms/
 ├── backend/
